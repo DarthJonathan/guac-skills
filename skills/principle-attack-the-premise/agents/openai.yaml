@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Attack The Premise"
+  short_description: "Attack the premise with pstack workflows"
+  default_prompt: "Use $principle-attack-the-premise for this task."
+
+policy:
+  allow_implicit_invocation: false

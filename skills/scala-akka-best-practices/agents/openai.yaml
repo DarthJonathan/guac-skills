@@ -1,0 +1,7 @@
+interface:
+  display_name: "Guac · Scala and Akka Best Practices"
+  short_description: "Source-specific Scala/Akka review cases and evidence"
+  default_prompt: "Use $scala-akka-best-practices to find matching source cases, read their conditions and follow-up comments, and verify their applicability to the current code without generalizing them."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,17 @@
+{
+  "name": "pstack-codex",
+  "version": "0.15.32-codex.5",
+  "description": "Unofficial fork of Lauren Tan's pstack, adapted for Codex with 59 engineering workflow and principle skills.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Pstack Codex fork contributors"
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "Pstack for Codex (fork)",
+    "shortDescription": "Unofficial Codex fork of pstack",
+    "longDescription": "An unofficial fork of pstack by Lauren Tan (poteto), adapted independently for Codex. Original source: github.com/cursor/plugins, pstack directory. Preserves the upstream MIT license and attribution."
+  },
+  "repository": "https://github.com/DarthJonathan/guac-skills",
+  "homepage": "https://github.com/DarthJonathan/guac-skills#readme"
+}

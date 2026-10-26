@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Make Bot Ui"
+  short_description: "Make bot ui with pstack workflows"
+  default_prompt: "Use $make-bot-ui for this task."
+
+policy:
+  allow_implicit_invocation: false

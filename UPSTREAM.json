@@ -1,0 +1,264 @@
+{
+  "repository": "https://github.com/cursor/plugins",
+  "path": "pstack",
+  "commit": "99b609a72323b70204eab407c622f436e858e112",
+  "upstream_version": "0.15.32",
+  "license": "MIT",
+  "port": "0.15.32-codex.5",
+  "skills": [
+    {
+      "name": "architect",
+      "explicit_only": true
+    },
+    {
+      "name": "arena",
+      "explicit_only": true
+    },
+    {
+      "name": "automate-me",
+      "explicit_only": true
+    },
+    {
+      "name": "benchmark-checklist",
+      "explicit_only": true
+    },
+    {
+      "name": "blast-radius",
+      "explicit_only": true
+    },
+    {
+      "name": "bro",
+      "explicit_only": true
+    },
+    {
+      "name": "correct",
+      "explicit_only": true
+    },
+    {
+      "name": "create-formal-verification-skill",
+      "explicit_only": true
+    },
+    {
+      "name": "create-verification-skill",
+      "explicit_only": true
+    },
+    {
+      "name": "figure-it-out",
+      "explicit_only": true
+    },
+    {
+      "name": "how",
+      "explicit_only": true
+    },
+    {
+      "name": "in-your-own-words",
+      "explicit_only": true
+    },
+    {
+      "name": "interrogate",
+      "explicit_only": true
+    },
+    {
+      "name": "ketchup",
+      "explicit_only": true
+    },
+    {
+      "name": "ketchup-video",
+      "explicit_only": true
+    },
+    {
+      "name": "maintain-formal-verification-skill",
+      "explicit_only": true
+    },
+    {
+      "name": "maintain-verification-skill",
+      "explicit_only": true
+    },
+    {
+      "name": "make-bot-ui",
+      "explicit_only": true
+    },
+    {
+      "name": "no-comments",
+      "explicit_only": true
+    },
+    {
+      "name": "poteto-help",
+      "explicit_only": true
+    },
+    {
+      "name": "poteto-mode",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-attack-the-premise",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-boundary-discipline",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-build-the-lever",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-encode-lessons-in-structure",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-exhaust-the-design-space",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-experience-first",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-explain-the-number",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-fix-root-causes",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-foundational-thinking",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-guard-the-context-window",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-laziness-protocol",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-make-operations-idempotent",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-migrate-callers-then-delete-legacy-apis",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-minimize-reader-load",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-model-the-domain",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-never-block-on-the-human",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-outcome-oriented-execution",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-prove-it-works",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-redesign-from-first-principles",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-separate-before-serializing-shared-state",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-sequence-verifiable-units",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-subtract-before-you-add",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-test-behavior-not-implementation",
+      "explicit_only": true
+    },
+    {
+      "name": "principle-type-system-discipline",
+      "explicit_only": true
+    },
+    {
+      "name": "recall",
+      "explicit_only": true
+    },
+    {
+      "name": "reflect",
+      "explicit_only": true
+    },
+    {
+      "name": "setup-pstack",
+      "explicit_only": false
+    },
+    {
+      "name": "sharpen",
+      "explicit_only": true
+    },
+    {
+      "name": "show-me-your-work",
+      "explicit_only": true
+    },
+    {
+      "name": "statechart",
+      "explicit_only": true
+    },
+    {
+      "name": "swarm",
+      "explicit_only": true
+    },
+    {
+      "name": "tdd",
+      "explicit_only": true
+    },
+    {
+      "name": "teach",
+      "explicit_only": true
+    },
+    {
+      "name": "technical-writing",
+      "explicit_only": true
+    },
+    {
+      "name": "typescript-best-practices",
+      "explicit_only": true
+    },
+    {
+      "name": "unslop",
+      "explicit_only": true
+    },
+    {
+      "name": "why",
+      "explicit_only": true
+    }
+  ],
+  "excluded": [
+    "Dormant Cursor-only automations/benny pack",
+    "Cursor and Claude Code installation guides"
+  ],
+  "adaptations": [
+    "Codex skill metadata and invocation",
+    "Native delegation and model inheritance",
+    "Project-scoped history through available Codex tools",
+    "Codex configuration file",
+    "Authorization-preserving PR and automation workflows",
+    "Read-only worktree audit"
+  ],
+  "relationship": "unofficial-fork",
+  "fork_notice": "This is an independently adapted Codex fork of pstack by Lauren Tan (poteto), not an upstream pstack release.",
+  "fork_repository": "https://github.com/DarthJonathan/guac-skills",
+  "fork_skills": [
+    {
+      "name": "scala-akka-best-practices",
+      "explicit_only": false,
+      "origin": "Source-specific silver-server review cases extracted from both user-provided anonymized exports, preserving exact statements, original symbols, detailed conditions, alternatives, corrections and traceable evidence. Full exports and application checkout are not bundled."
+    }
+  ]
+}

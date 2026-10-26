@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Create Verification Skill"
+  short_description: "Create verification skill"
+  default_prompt: "Use $create-verification-skill for this task."
+
+policy:
+  allow_implicit_invocation: false

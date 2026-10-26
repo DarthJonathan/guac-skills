@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Sequence Verifiable Units"
+  short_description: "Sequence verifiable units"
+  default_prompt: "Use $principle-sequence-verifiable-units for this task."
+
+policy:
+  allow_implicit_invocation: false

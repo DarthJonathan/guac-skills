@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Experience First"
+  short_description: "Experience first with pstack workflows"
+  default_prompt: "Use $principle-experience-first for this task."
+
+policy:
+  allow_implicit_invocation: false

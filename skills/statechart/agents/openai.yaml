@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Statechart"
+  short_description: "Statechart with pstack workflows"
+  default_prompt: "Use $statechart for this task."
+
+policy:
+  allow_implicit_invocation: false

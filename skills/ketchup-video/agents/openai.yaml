@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Ketchup Video"
+  short_description: "Ketchup video with pstack workflows"
+  default_prompt: "Use $ketchup-video for this task."
+
+policy:
+  allow_implicit_invocation: false

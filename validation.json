@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-26",
+  "upstream_commit": "99b609a72323b70204eab407c622f436e858e112",
+  "official_skill_validator": {
+    "passed": 59,
+    "failed": 0
+  },
+  "package_metadata_and_relative_links": "passed",
+  "installer_and_worktree_tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "upstream_statechart_tests": {
+    "passed": 50,
+    "failed": 0,
+    "skipped": 100,
+    "skip_reason": "TLC or rendering dependencies unavailable"
+  },
+  "script_syntax": {
+    "javascript_and_typescript_files": 38,
+    "failed": 0,
+    "typescript_method": "Node stripTypeScriptTypes in transform mode, followed by module syntax checking",
+    "python": "passed",
+    "bash": "passed"
+  },
+  "decision_log_smoke": "append, tab/newline cleanup, and formula neutralization passed",
+  "not_exercised": [
+    "Bun-dependent helper suites",
+    "TypeScript type checking",
+    "Live GitHub operations",
+    "End-to-end Codex model execution"
+  ],
+  "execution": "Detailed source-specific extraction applied in the user-supplied guac-skills repository after independent cross-review and explicit agreement from all three reviewers and the primary agent. Native Codex installation is enabled and all skill files match source. Existing history and unrelated work were preserved. No commits or pushes were made.",
+  "fork_version": "0.15.32-codex.5",
+  "local_marketplace": "validated and resolved by native Codex CLI",
+  "packaging_test": {
+    "passed": 2,
+    "failed": 0,
+    "checks": [
+      "Hidden marketplace and compatibility manifests included; extracted package validates.",
+      "Environment files and local dependencies excluded.",
+      "Historical Scala source syntax is distinguished from authored Markdown links; actual missing references fail validation."
+    ]
+  },
+  "previous_native_install": {
+    "plugin_id": "pstack-codex@pstack-codex-marketplace",
+    "version": "0.15.32-codex.4",
+    "installed": true,
+    "enabled": true,
+    "cached_skills": 59,
+    "all_skill_files_match_source": true
+  },
+  "native_codex_plugin_install": {
+    "plugin_id": "pstack-codex@pstack-codex-marketplace",
+    "version": "0.15.32-codex.5",
+    "installed": true,
+    "enabled": true,
+    "cached_skills": 59,
+    "all_skill_files_match_source": true
+  },
+  "scala_akka_addition": {
+    "source": "User-provided anon-1.jsonl and anon-2.jsonl silver-server review-comment exports. Exact original names and comment evidence are retained with source stance, selected diff context, conditions and follow-up corrections.",
+    "indexed_comments": 6087,
+    "distinct_prs": 1052,
+    "source_specific_cases": 5790,
+    "topic_routes": 13,
+    "additional_thread_context_rows": 289,
+    "all_source_rows_accounted": true,
+    "missing_source_rows": 0,
+    "raw_exports_included": false,
+    "full_application_checkout_included": false,
+    "selected_original_code_excerpts_included": true,
+    "examples": "Original source statements and evidence; selected transformed nested views are explicitly labeled and retain before/after/event roles. Incidental identity values and portions of repetitive logs are omitted with stated limits.",
+    "invocation": "Explicit invocation and automatic discovery.",
+    "source_validation": {
+      "source_hashes_verified": true,
+      "all_exact_comment_and_context_evidence_verified": true,
+      "all_case_ids_and_row_references_resolve": true,
+      "primary_assembled_artifact_audit": {
+        "status": "passed",
+        "catalog_cases": 5790,
+        "source_rows_accounted": 6087,
+        "additional_thread_context_rows": 289,
+        "exact_comment_evidence_blocks_checked": 7473,
+        "exact_hunk_or_title_context_blocks_checked": 6406,
+        "topics": {
+          "actor-state": 435,
+          "api-types-json": 1842,
+          "async-effects": 390,
+          "database": 360,
+          "design-scope": 1368,
+          "domain-validation": 2848,
+          "errors-observability": 646,
+          "kafka-streams": 167,
+          "persistence-evolution": 229,
+          "projections-delivery": 426,
+          "rollout-operations": 654,
+          "scala-collections": 375,
+          "testing": 350
+        },
+        "hashes": {
+          "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+          "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+          "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+        },
+        "scope": "Independent assembled-artifact source/ledger/evidence audit, all topic routes, and concrete symbol, correction-thread, exact-ID and context retrieval checks. Primary manual extraction and repair review are documented separately."
+      }
+    },
+    "review_record": "skills/scala-akka-best-practices/references/review-convergence.json",
+    "provenance_record": "skills/scala-akka-best-practices/references/source-provenance.json",
+    "extraction_limits": "Incidental human/customer/account identifiers and portions of long operational dumps are omitted where not technically material. Domain symbols, conditions, numeric boundaries, and meaningful case branches are retained.",
+    "source_application_compile": "Not run; source application files were read-only and no Scala application code changed.",
+    "skill_behavior_evaluation": "Independent reviewer exercised realistic source-case retrieval and the router/helper, including correction threads and precise field/threshold distinctions. This does not claim an end-to-end native Codex model run of the full pstack workflows.",
+    "review_convergence": {
+      "status": "converged",
+      "reviewers_approved": 3,
+      "primary_decision": "approve",
+      "closed_finding_groups": 24,
+      "unresolved_substantive_objections": [],
+      "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+      "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+      "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+    }
+  },
+  "source_case_lookup_tests": {
+    "passed": 3,
+    "failed": 0
+  },
+  "package_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "upstream_checks_note": "The recorded upstream statechart, JavaScript/TypeScript syntax, shell syntax and decision-log checks are from the earlier port validation. Their upstream files were unchanged by this detailed source-case update."
+}

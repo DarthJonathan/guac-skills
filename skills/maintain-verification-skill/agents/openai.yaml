@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Maintain Verification Skill"
+  short_description: "Maintain verification skill"
+  default_prompt: "Use $maintain-verification-skill for this task."
+
+policy:
+  allow_implicit_invocation: false

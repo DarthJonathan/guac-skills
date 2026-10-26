@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · How"
+  short_description: "How with pstack workflows"
+  default_prompt: "Use $how for this task."
+
+policy:
+  allow_implicit_invocation: false

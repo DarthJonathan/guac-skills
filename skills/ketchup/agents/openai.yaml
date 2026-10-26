@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Ketchup"
+  short_description: "Ketchup with pstack workflows"
+  default_prompt: "Use $ketchup for this task."
+
+policy:
+  allow_implicit_invocation: false

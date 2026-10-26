@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Migrate Callers Then Delete Legacy Apis"
+  short_description: "Migrate callers then delete legacy apis"
+  default_prompt: "Use $principle-migrate-callers-then-delete-legacy-apis for this task."
+
+policy:
+  allow_implicit_invocation: false

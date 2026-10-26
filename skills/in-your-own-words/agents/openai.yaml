@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · In Your Own Words"
+  short_description: "In your own words with pstack workflows"
+  default_prompt: "Use $in-your-own-words for this task."
+
+policy:
+  allow_implicit_invocation: false

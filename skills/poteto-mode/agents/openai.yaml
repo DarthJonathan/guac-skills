@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Poteto Mode"
+  short_description: "Poteto mode with pstack workflows"
+  default_prompt: "Use $poteto-mode for this task."
+
+policy:
+  allow_implicit_invocation: false

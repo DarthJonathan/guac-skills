@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Poteto Help"
+  short_description: "Poteto help with pstack workflows"
+  default_prompt: "Use $poteto-help for this task."
+
+policy:
+  allow_implicit_invocation: false

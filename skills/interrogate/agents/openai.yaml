@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Interrogate"
+  short_description: "Interrogate with pstack workflows"
+  default_prompt: "Use $interrogate for this task."
+
+policy:
+  allow_implicit_invocation: false

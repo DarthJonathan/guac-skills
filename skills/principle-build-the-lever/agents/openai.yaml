@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Build The Lever"
+  short_description: "Build the lever with pstack workflows"
+  default_prompt: "Use $principle-build-the-lever for this task."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Redesign From First Principles"
+  short_description: "Redesign from first principles"
+  default_prompt: "Use $principle-redesign-from-first-principles for this task."
+
+policy:
+  allow_implicit_invocation: false

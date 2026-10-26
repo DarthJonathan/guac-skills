@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Fix Root Causes"
+  short_description: "Fix root causes with pstack workflows"
+  default_prompt: "Use $principle-fix-root-causes for this task."
+
+policy:
+  allow_implicit_invocation: false

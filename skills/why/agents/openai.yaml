@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Why"
+  short_description: "Why with pstack workflows"
+  default_prompt: "Use $why for this task."
+
+policy:
+  allow_implicit_invocation: false

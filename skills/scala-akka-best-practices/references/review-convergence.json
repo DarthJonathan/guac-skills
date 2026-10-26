@@ -1,0 +1,686 @@
+{
+  "status": "converged",
+  "timestamp_utc": "2026-10-26T08:41:41.539147+00:00",
+  "scope": "Fidelity to the supplied review-comment corpus, full row accounting, exact evidence, retained technical associations/conditions, questions/corrections, and usable skill routing/retrieval.",
+  "catalog_cases": 5790,
+  "source_rows": 6087,
+  "source_rows_accounted": 6087,
+  "missing_source_rows": 0,
+  "topics": 13,
+  "additional_thread_context_rows": 289,
+  "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+  "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+  "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465",
+  "primary_decision": "approve",
+  "review_configuration": "Three separately tasked agents performed extraction and independent cross-review using the session model configuration, followed by primary review. This was not a multi-model panel.",
+  "rounds": [
+    {
+      "reviewer": "agent-1",
+      "target": "agent-2",
+      "source_scope": "anon-2.jsonl:1-1806",
+      "process": "Independent review, concrete objections, extractor repairs, independent repair recheck.",
+      "finding_groups": 1,
+      "findings": [
+        {
+          "id": "A1-REVIEW-A2-01",
+          "title": "Explicit source-scoped technical requests/questions are excluded solely with supporting-context status",
+          "kind": "omission/disposition",
+          "source_rows": [
+            23,
+            123,
+            128,
+            709,
+            733,
+            798,
+            888,
+            1031,
+            1098,
+            1127,
+            1347,
+            1389,
+            1480,
+            1496,
+            1541,
+            1567,
+            1763,
+            1766
+          ],
+          "status": "resolved-by-independent-recheck",
+          "problem": "These comments already name an action, type, field, configuration, component, or precise target package. Lack of a hunk limits identification of the old symbol but does not erase the stated technical action/question. They are absent from the case catalog and topic routing, so ordinary symbol search without --include-context misses them. This is narrower than requesting all terse or formatting-only excluded rows be promoted.",
+          "requested_repair": "Promote these 18 rows to individual records using their literal source wording and path/PR scope. Keep question/suggestion stance where stated; add a no-hunk/unspecified-old-symbol caveat rather than inventing the old target. In particular row1127 FUNDING_METHOD and row1389 akka-cluster.conf remain unresolved questions, row733 proposes increasing errorCountThreshold without supplying a new number, row888 explicitly adds communication to the release service list, and row1496 corrects FeeChargeRequestJdbcProjection to V6 only in the PR-description table. Keep stable row-based A2 IDs and update coverage/provenance/topic outputs after merge.",
+          "resolution": "All18 specified rows now have stable A2 row-derived IDs, exact comment evidence, source-scoped wording, and explicit no-hunk/uncertainty caveats. New questions remain open; no threshold number, runtime V6 migration, or mandatory package policy invented."
+        }
+      ],
+      "decision": "no-substantive-objection-after-repairs",
+      "unresolved_substantive_objections": [],
+      "private_review_record_sha256": "37c0e76fb4bd8e51c8522a6f8d04462586b10fd5d62a6fbf877e27d4e2bff358"
+    },
+    {
+      "reviewer": "agent-2",
+      "target": "agent-3",
+      "source_scope": "anon-2.jsonl:1807-3313",
+      "process": "Independent review, concrete objections, extractor repairs, independent repair recheck.",
+      "finding_groups": 7,
+      "findings": [
+        {
+          "id": "R2-A3-01",
+          "title": "Fee/voucher/tax response was flattened and lost account-local calculation conditions",
+          "source_rows": [
+            1966
+          ],
+          "pattern_ids": [
+            "A3-0147"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "requested_change deduplicates selected field lines into one unstructured list. This loses which accumulatedFee, voucherCode/discount, planCcy and averageFeeRatio belong to each plan and omits calculationTarget=DiscountedPrice entirely. The constraint says tax calculations remain, but the preserved values no longer encode those calculations. This is a substantive loss in an explicitly numeric fee simulation example.",
+          "proposed_repair": "Retain a compact per-plan structured matrix for all eight original branches, keeping account type+planCcy+averageFeeRatio+accumulatedFee+each voucherCode/discount+DiscountedPrice base+8% tax+total. Omit customer/goal/plan UUIDs. Add the eight exact safe source spans below (or equivalently restore the JSON with incidental IDs removed); do not globally deduplicate field lines.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        },
+        {
+          "id": "R2-A3-02",
+          "title": "Fee-withdrawal verification claims four events but does not quote their names; balance caveat is separate",
+          "source_rows": [
+            2341,
+            2342
+          ],
+          "pattern_ids": [
+            "A3-0505",
+            "A3-0506"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "A3-0505 constraint claims four events and a recalculated balance. Its retained evidence contains only the prose heading Events, not the four event names. The next source row explicitly says the balance was messed up by test setup and only an attempted recalculation is established.",
+          "proposed_repair": "Add exact event-list evidence: CashReservationDeletedEvt, BrokerAccountCashBalanceUpdatedEvt, BrokerAccountWithdrawalRequestUpdatedEvt, CashWithdrawalRequestDeletedEvt. Link row2342 and qualify the constraint as emitted balance-update event/attempted recalculation, not validated balance arithmetic.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        },
+        {
+          "id": "R2-A3-03",
+          "title": "Docker smoke test drops technical label/env/build-info keys while claiming them verified",
+          "source_rows": [
+            3276
+          ],
+          "pattern_ids": [
+            "A3-1384"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "All fenced blocks are omitted. The remaining prose says Correct labels/Correct env var/Expected image layers but no longer identifies GIT_BRANCH_NAME, SHORT_GIT_HASH, /config/info/build, git-branch-name or short-git-hash. The constraint claims branch/hash and layer-order verification without preserving those technical distinctions.",
+          "proposed_repair": "Keep concise exact snippets for the two Docker label keys, two environment keys, build-info endpoint and JSON key names. Preserve the meaningful relative layer sequence (CMD/ENTRYPOINT/USER, app branch/hash env+labels, three COPY layers, WORKDIR/user creation, microdnf base update) if continuing to claim layer-order verification; registry/project/pod/hash values can remain omitted. Alternatively narrow the constraint to the limited prose claim instead of implying retained layer details.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        },
+        {
+          "id": "R2-A3-04",
+          "title": "New-model subscriber release target correction is absent from the preceding record",
+          "source_rows": [
+            2853,
+            2854
+          ],
+          "pattern_ids": [
+            "A3-0993"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "Row2854 is retained only as supporting context. A3-0993 at2853 asks for new-model subscriber validation and services.list/release but has no clarification that the target is redemption service rather than transaction service. The exact service correction is a substantive scope qualifier in the same PR.",
+          "proposed_repair": "Append a constraint to the2853 record referencing2854: the commenter corrects service target to redemption, not transaction. Add2854 exact evidence and keep its ledger supporting disposition if no separate pattern is needed.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        },
+        {
+          "id": "R2-A3-05",
+          "title": "Withdrawn grouping question remains an unqualified open question",
+          "source_rows": [
+            2872,
+            2873
+          ],
+          "pattern_ids": [
+            "A3-1011"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "The grouping question at2872 remains open-question with no revision qualifier. Adjacent same-PR/file row2873 says Nvm minor thing and is excluded as acknowledgement; this withdrawal is not visible on the pattern.",
+          "proposed_repair": "Add a related-row constraint that2873 withdraws/sets aside the grouping question as minor. Preserve original question as historical, but do not expose it as an outstanding requested grouping change.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        },
+        {
+          "id": "R2-A3-06",
+          "title": "HK detail is sourced only from PR title but lacks PR-title evidence attribution",
+          "source_rows": [
+            2480
+          ],
+          "pattern_ids": [
+            "A3-0631"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "The custom constraint calls the test an HK plan. The prose never says HK; the PR title does, and no hunk is available. Evidence contains only comment quotes, so the added region detail lacks the required context_field=pr_title traceability.",
+          "proposed_repair": "Add exact context_quote/context_field=pr_title evidence for2480 and explicitly identify HK as metadata-derived. Consider the same simple PR-title evidence addition for all records whose authored title/constraints derive details from PR metadata.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        },
+        {
+          "id": "R2-A3-07",
+          "title": "Source test says88 days while JSON says90; preserve visible inconsistency",
+          "source_rows": [
+            2477
+          ],
+          "pattern_ids": [
+            "A3-0628"
+          ],
+          "status": "resolved-and-independently-rechecked",
+          "issue": "Both values remain in requested_change, so there is no literal omission. However the source is internally inconsistent: its rough formula uses88days while totalHoldingPeriodInDays is90. This matters when presenting the report as fee-calculation verification.",
+          "proposed_repair": "Add a constraint noting the source88-vs90 discrepancy and avoid treating the rough formula as independently verified exact fee arithmetic. Do not silently change either value.",
+          "resolution": "Repair inspected in final artifact against the raw source and exact evidence."
+        }
+      ],
+      "decision": "converged-no-unresolved-substantive-objections",
+      "unresolved_substantive_objections": [],
+      "private_review_record_sha256": "308d74c3c41601050bd52e0dde2d11bd48c18814dda123673dfeb5b874db877a"
+    },
+    {
+      "reviewer": "agent-3",
+      "target": "agent-1",
+      "source_scope": "anon-1.jsonl:1-2474",
+      "process": "Independent review, concrete objections, extractor repairs, independent repair recheck.",
+      "finding_groups": 7,
+      "findings": [
+        {
+          "id": "A3-A1-01",
+          "title": "Flattened migration-test field lists lose before/after and nested event roles",
+          "source_rows": [
+            2358
+          ],
+          "pattern_ids": [
+            "A1-2340",
+            "A1-2341",
+            "A1-2342",
+            "A1-2343"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "Four transformed records preserve individual literal lines but discard Existing entity data versus after-script section labels and parent fields such as currentTaa/newTaa, previousProductLineAndIntent/newProductLineAndIntent and previousProductLine/newProductLine. Goal emits multiple similarly named events, so the unstructured sequence no longer preserves which old/new values belong to each event. The shared d56-versus-prod/name caveats are also omitted.",
+          "proposed_repair": "Retain coherent identity-free before-state, after-state and per-event structures for goal/rebalance/trading/charge, with explicit section labels and enclosing old/new keys. Preserve all meaningful technical field/value associations and repeated event branches; IDs and unrelated verbose metadata may be omitted. Carry the source d56 effective-date difference and goal-name caveat."
+        },
+        {
+          "id": "A3-A1-02",
+          "title": "Standalone client example drops technical discovery configuration",
+          "source_rows": [
+            1951
+          ],
+          "pattern_ids": [
+            "A1-1931"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "The transformed record omits the complete configuration tail. This removes ENV/REGION selection, the remote-client-discovery include and SERVICES_DOMAIN key, even though the title claims a configuration example. Empty credential placeholders and the literal environment host can remain omitted.",
+          "proposed_repair": "Add exact safe configuration snippets identifying application.overrides.conf, ENV/REGION, include local/client-discovery.remote.conf and the SERVICES_DOMAIN key, with explicit omission of host/credential values. Do not imply the Scala code alone is the entire supplied setup."
+        },
+        {
+          "id": "A3-A1-03",
+          "title": "Exact title fields inferred from hunks need retained attribution;380 uses the wrong field spelling",
+          "source_rows": [
+            190,
+            380,
+            915,
+            1460
+          ],
+          "pattern_ids": [
+            "A1-0184",
+            "A1-0373",
+            "A1-0902",
+            "A1-1443"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "Titles add transactionFee, lastUpdated, requestBy/reason and cashOnlyFee although those exact code fields appear only in the available raw hunks, not in the comment text. Their records have PR-title metadata but no hunk evidence.380 actual field is lastUpdatedAt, not lastUpdated.",
+          "proposed_repair": "Add a concise exact hunk span and explicit hunk-only field-identification constraint, or keep titles descriptive rather than naming unquoted code fields. Correct380 to lastUpdatedAt if using the exact field name."
+        },
+        {
+          "id": "A3-A1-04",
+          "title": "Title invents a qualified-topic shorthand and silently repairs a source package spelling",
+          "source_rows": [
+            974,
+            1216
+          ],
+          "pattern_ids": [
+            "A1-0959",
+            "A1-1202"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "974 title SgCustomerServiceComplianceTopic is not the actual symbol; source says SgCustomerServiceTopics.CustomerServiceComplianceTopic.1216 title silently changes source sgPlanAcknowlegdement to sgPlanAcknowledgement. Full requested statements preserve the source, but exact-symbol retrieval through titles can be misleading.",
+          "proposed_repair": "Use the exact qualified topic symbol or descriptive wording. For1216 preserve the source spelling with an explicit note, or use a descriptive SG-specific-package title rather than silently asserting a corrected code symbol."
+        },
+        {
+          "id": "A3-A1-05",
+          "title": "Titles assign exact unnamed targets without available hunk support",
+          "source_rows": [
+            399,
+            1934,
+            2298
+          ],
+          "pattern_ids": [
+            "A1-0392",
+            "A1-1914",
+            "A1-2281"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "The respective comments do not name getTenantRingfencingProfile, priceSource or commId, and raw hunks are unavailable. These titles supply precise targets beyond their own retained evidence.399 may be corroborated by same-PR423; the other two should retain target uncertainty rather than invent an exact symbol.",
+          "proposed_repair": "Use descriptive source-level titles or append exact same-thread supporting evidence with a qualified relationship. Do not turn here/this/these into a definite code target without evidence."
+        },
+        {
+          "id": "A3-A1-06",
+          "title": "Selected driver-code lines omit the TypesafeDriverConfig guard",
+          "source_rows": [
+            494
+          ],
+          "pattern_ids": [
+            "A1-0487"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "The prose correctly scopes the cloud/default override, but the selected code inventory retains productType and overrideDefaults while dropping the explicit driverConfig instanceof TypesafeDriverConfig guard. That is a meaningful condition in the quoted implementation.",
+          "proposed_repair": "Retain the short coherent DriverConfig/TypesafeDriverConfig/cloud-product conditional block, or explicitly state that omitted code also requires TypesafeDriverConfig. Keep defaultLOCAL_QUORUM versus akka-projectionQUORUM profile associations unchanged."
+        },
+        {
+          "id": "A3-A1-07",
+          "title": "Deletion case should preserve dividend preference discriminator and source naming discrepancy",
+          "source_rows": [
+            2126
+          ],
+          "pattern_ids": [
+            "A1-2106",
+            "A1-2107",
+            "A1-2108",
+            "A1-2109"
+          ],
+          "status": "repaired-and-independently-rechecked",
+          "issue": "A1-2109 title says DistributeCashBalance, while retained prose says DistributedCashBalance. The actual raw JSON discriminator is distributionPreference=DistributeCashBalance but that field is omitted by the selected-line filter. This matters because the source specifically conditions deletion/retry on this preference.",
+          "proposed_repair": "Retain the exact distributionPreference field and note source prose DistributedCashBalance versus JSON DistributeCashBalance spelling rather than silently resolving the discrepancy. No need to restore account/customer identifiers or full payload logs."
+        }
+      ],
+      "decision": "converged-no-unresolved-substantive-objections",
+      "unresolved_substantive_objections": [],
+      "private_review_record_sha256": "5a049deaa763985062121e5e2957f23b9949e631feaf0d3ff9564b6e99ac8e9a"
+    },
+    {
+      "reviewer": "agent-3",
+      "target": "primary",
+      "source_scope": "anon-2.jsonl:3314-3613",
+      "process": "Independent review, concrete objections, extractor repairs, independent repair recheck.",
+      "finding_groups": 9,
+      "findings": [
+        {
+          "id": "A3-RREV-01",
+          "kind": "stance",
+          "source_rows": [
+            3350
+          ],
+          "record_ids": [
+            "R-3350"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "A production/staging verification question was labeled reported-verification, although the source asks whether deployment happened.",
+          "proposed_repair": "Use open-question and preserve the prod-versus-staging discrepancy."
+        },
+        {
+          "id": "A3-RREV-02",
+          "kind": "stance",
+          "source_rows": [
+            3465
+          ],
+          "record_ids": [
+            "R-3465"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Testing-only d9 setup with fewer than100k customers was labeled a reported result.",
+          "proposed_repair": "Use explanation; do not infer a completed verification from this setup note."
+        },
+        {
+          "id": "A3-RREV-03",
+          "kind": "fidelity",
+          "source_rows": [
+            3501
+          ],
+          "record_ids": [
+            "R-3501"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Original authored title said the topic retries the action. Source instead expects a later PlanTargetAssetAllocationUpdatedMsg to trigger rebalance after a failed force call.",
+          "proposed_repair": "Say proposal to recover force-rebalance failure after successful TAA update because later PlanTargetAssetAllocationUpdatedMsg may trigger rebalance."
+        },
+        {
+          "id": "A3-RREV-04",
+          "kind": "stance",
+          "source_rows": [
+            3365,
+            3366
+          ],
+          "record_ids": [
+            "R-3365",
+            "R-3366"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "The exception hierarchy and Kafka2.3-versus2.0 compatibility statements are factual explanations, not requested actions.",
+          "proposed_repair": "Use explanation so an unsupported incrementalAlterConfigs migration is not implied."
+        },
+        {
+          "id": "A3-RREV-05",
+          "kind": "stance",
+          "source_rows": [
+            3500
+          ],
+          "record_ids": [
+            "R-3500"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Source includes an unresolved question about whether Lagom reassigns tags after readiness failure; requested-change does not express that uncertainty.",
+          "proposed_repair": "Use open-question or explanation with an explicit unresolved tag-reassignment constraint; retain the200s estimate as historical source reasoning."
+        },
+        {
+          "id": "A3-RREV-06",
+          "kind": "stance",
+          "source_rows": [
+            3522
+          ],
+          "record_ids": [
+            "R-3522"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Source explicitly asks whether transactionDate=pdd.createdAt versus subscriber payoutDate is a bug or intended. explanation can read as settled.",
+          "proposed_repair": "Use open-question; retain separate migration and subscriber meanings without deciding correctness."
+        },
+        {
+          "id": "A3-RREV-07",
+          "kind": "omission",
+          "source_rows": [
+            3595
+          ],
+          "record_ids": [
+            "R-3595"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Iterator preference in AdvisoryServiceImplTest is technical, although classified acknowledgement.",
+          "proposed_repair": "Retain as scoped suggestion with exact source statement, or explicitly technical supporting context if the alternative/referent cannot be recovered. Do not turn it into a universal iterator recommendation."
+        },
+        {
+          "id": "A3-RREV-08",
+          "kind": "coverage-classification",
+          "source_rows": [
+            3563,
+            3573
+          ],
+          "record_ids": [
+            "R-3563",
+            "R-3573"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Removal request in CircleCI config and typo question in PlanTopicSubscriber are classified procedural/nontechnical despite technical targets. Hunks are unavailable, so precise affected symbols remain unresolved.",
+          "proposed_repair": "Use supporting-context with component/PR and exact text; preserve uncertainty instead of inventing a changed symbol."
+        },
+        {
+          "id": "A3-RREV-09",
+          "kind": "traceability",
+          "source_rows": [
+            3482
+          ],
+          "record_ids": [
+            "R-3482"
+          ],
+          "status": "repaired-and-rechecked",
+          "problem": "Authored title adds pagination/monthly-statement context beyond comment text. The raw hunk supports it, but the record has no explicitly marked context evidence.",
+          "proposed_repair": "Add context_field=hunk with context_quote equal to the exact createMonthlyStatements signature, plus a constraint identifying this as hunk-only component context."
+        }
+      ],
+      "decision": "Converged after explicit repairs. No unresolved substantive fidelity, scope, omission, conflation or traceability objections remain for the reviewed root slice.",
+      "unresolved_substantive_objections": [],
+      "private_review_record_sha256": "240c8cfc91a89fdea0cdcb440914ed14a1d9f7a04509959b09fe08abc2e00208"
+    }
+  ],
+  "final_integration_round": "Every reviewer inspected the same final catalog, helper and SKILL hashes after all requested source repairs. Individual decisions below retain their own review scope and limits.",
+  "reviewers": [
+    {
+      "reviewer": "agent-1",
+      "decision": "approve",
+      "unresolved_substantive_objections": [],
+      "decision_record_sha256": "c39ab2358af3d6d3c3c88935d5af7b602de9aaff0bb8c3b2e2865a21475e0727",
+      "approved_artifact_hashes": {
+        "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+        "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+        "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+      },
+      "independent_decision_record": {
+        "reviewer": "agent-1",
+        "decision": "approve",
+        "timestamp_utc": "2026-10-26T08:36:31.568426+00:00",
+        "approved_artifact_hashes_sha256": {
+          "work/guac-scala-deep-update/skills/scala-akka-best-practices/references/pattern-catalog.json": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+          "work/guac-scala-deep-update/skills/scala-akka-best-practices/scripts/find_patterns.py": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+          "work/guac-scala-deep-update/skills/scala-akka-best-practices/SKILL.md": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+        },
+        "unresolved_substantive_objections": [],
+        "independent_integration_checks": {
+          "catalog_cases": 5790,
+          "unique_case_ids": 5790,
+          "row_ledger": 6087,
+          "unique_source_rows": 6087,
+          "topics": 13,
+          "topic_files": 13,
+          "all_topic_case_membership_matches_catalog": true,
+          "own2453_final_cases_match_all_core_fields_and_every_evidence_block": true,
+          "reviewed_agent2_1658_final_cases_match_all_core_fields_and_every_evidence_block": true,
+          "own_and_agent2_4280_ledger_rows_match_final_source_coverage": true,
+          "mismatches": 0
+        },
+        "independent_runtime_checks": [
+          "Read actual SKILL.md and helper implementation; router preserves scope, unresolved questions, historical claims and PR correction reading.",
+          "Documented lookup examples for insertOrUpdateAll, PlanJdbcEventProcessor and PR3029/3059/2833 returned matching source cases/thread context.",
+          "Final exact-ID lookups A2-1127 and A2-0733 preserve question and threshold-without-number semantics.",
+          "Final A1-2340 lookup retains nested before/after/current/previous/new event roles; A1-0487 lookup retains repaired driver guard.",
+          "transactionFee pagination reports19 total matches, returns distinct2-case pages and preserves total."
+        ],
+        "source_review_scope": {
+          "anon1": "I manually read all2474 source comments during extraction, with selected hunk inspection and explicitly disclosed mechanical near-line hunk context. All2453 final records/3579 evidence blocks/2474 source ledger rows pass source validation. The19 reviewed repair cases preserve source nesting, technical configuration, exact fields and spelling/uncertainty.",
+          "anon2": "I mechanically checked every final1658 record/3685 evidence block and all1806 assigned ledger rows. I manually read166 initially excluded comments,82 selected retained cases including all7 disclosed condensations and correction/defect/hunk samples, then all18 promoted cases. review-agent2.json records final no-objection decision after repairs.",
+          "remaining_scope_limit": "I did not perform a second complete manual read of every retained anon2 comment or the agent3/root extraction scopes. All5790 topic memberships and source row uniqueness were structurally checked; semantic approval for other source slices is not claimed."
+        },
+        "own_repair_recheck_received": {
+          "reviewer": "agent-3",
+          "approved_source_artifact_sha256": "d3e36ea6476c87c76f1dc6039c075f99330f72d5348931b4dd1880c91b148684",
+          "reported_result": "All7 findings and19 repaired cases independently rechecked;230 nested-view source scalar/identity-role comparisons passed; no unresolved substantive objections."
+        },
+        "decision_basis": "Approval rests on my source extraction, independent agent2 cross-review and repair recheck, actual final hash comparison, exact core-field/evidence/ledger integration comparison for4111 cases and4280 rows, full catalog/topic structural checks, and actual helper/router exercises. It is not inferred merely from another reviewer agreeing.",
+        "limits": "Historical source questions, preferences, examples and reported tests remain source evidence, not independently verified current Scala/Akka product guidance. Long operational dumps and unrelated identities are selectively omitted as documented. This decision approves the named staged content/router/helper hashes and their reviewed integration."
+      }
+    },
+    {
+      "reviewer": "agent-2",
+      "decision": "approve",
+      "unresolved_substantive_objections": [],
+      "decision_record_sha256": "e8380dd8dc9b3ab381fe0bbec7accfb34f61d58f721684b9e5da30c765995c45",
+      "approved_artifact_hashes": {
+        "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+        "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+        "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+      },
+      "independent_decision_record": {
+        "reviewer": "agent-2",
+        "decision": "approve",
+        "unresolved_substantive_objections": [],
+        "candidate_directory": "<skill-dir>",
+        "decision_time_utc": "2026-10-26T08:38:56.809913+00:00",
+        "reviewed_hashes": {
+          "references/pattern-catalog.json": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+          "scripts/find_patterns.py": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+          "SKILL.md": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+        },
+        "expected_hashes_match": true,
+        "scope": {
+          "complete_A2_integration_records": 1658,
+          "complete_reviewed_A3_integration_records": 1417,
+          "merged_catalog_records": 5790,
+          "unique_catalog_ids": 5790,
+          "merged_evidence_blocks_exactly_validated": 10217,
+          "covered_source_rows": 6087,
+          "topic_files_checked": 13,
+          "thread_context_records_exactly_validated": 289
+        },
+        "independent_checks": [
+          "Actual catalog/helper/SKILL hashes match the named candidate, including a final reread before approval.",
+          "Every original A2 and reviewed A3 record field, stance, constraint and evidence key/value survives unchanged; evidence only gains source metadata.",
+          "All18 no-hunk A2 omission repairs appear under stable IDs and are retrievable through ordinary IDs/keywords/topics; unresolved FUNDING_METHOD and akka-cluster questions remain open, and V6 remains PR-description-only.",
+          "All seven reviewed A3 repairs survive, including the eight nested fee/voucher/tax object associations, four deletion events plus attempted-balance caveat, Docker keys/layer sequence and correction qualifiers.",
+          "Every merged evidence block has exact source substring membership, matching source comment ID, PR metadata and comment hash; both source-file hashes match provenance.",
+          "All6087 source rows appear exactly once in ledger, with no missing/unexpected rows and every case link resolving to matching source evidence.",
+          "All13 topic files have exactly the expected case membership, and every rendered case body equals the actual helper renderer output.",
+          "All289 thread-context records have exact source evidence. PR lookup retains correction/withdrawal rows.",
+          "Eleven helper checks passed, including all18 new IDs, concrete field queries, question/topic filters, eight-plan JSON, two correction PRs, pagination, markdown evidence and invalid-limit handling.",
+          "SKILL.md and helper were read directly. The router requires complete source/thread reading, explicit stance/context distinctions and current-code proof; it does not present historical questions/preferences as current universal requirements."
+        ],
+        "honest_limits": [
+          "This final integration approval does not claim a new manual semantic rereading of all5790 cases. It combines exact merged-content/source validation with my full A2 extraction and the disclosed earlier A3 review.",
+          "The earlier A3 review audited every record mechanically and manually focused on authored, condensed, corrected, verification and exclusion cases; that original coverage limit remains.",
+          "Long repetitive source logs and full inline hunks were selectively inspected during extraction/review, not read byte-for-byte.",
+          "No current Scala/Akka/library behavior was independently verified outside the supplied historical corpus; current applicability still requires target-repository proof.",
+          "No shared staged artifact was edited during this review."
+        ],
+        "nonblocking_review_metadata_observation": {
+          "current_convergence_status": "in_progress",
+          "explanation": "The staged convergence record is still in_progress because it awaits reviewer final decisions including this approval. The primary agent can finalize that review record from the actual decisions; this does not change the approved catalog/helper/SKILL hashes."
+        },
+        "audit_artifacts": [
+          "final-integration-audit.json",
+          "final-helper-audit.json",
+          "review-agent3.json",
+          "review-repairs.json"
+        ]
+      }
+    },
+    {
+      "reviewer": "agent-3",
+      "decision": "approve",
+      "unresolved_substantive_objections": [],
+      "decision_record_sha256": "b996a8b139f3823e26476bc24c97043fb4f037116a0b9c2d544df74c6d8802d4",
+      "approved_artifact_hashes": {
+        "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+        "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+        "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+      },
+      "independent_decision_record": {
+        "reviewer": "agent-3",
+        "decision": "approve",
+        "approved_skill_directory": "<skill-dir>",
+        "approved_artifact_hashes": {
+          "references/pattern-catalog.json": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+          "scripts/find_patterns.py": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+          "SKILL.md": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+        },
+        "substantive_objections": [],
+        "scope": {
+          "original_extraction": "Direct manual comment reading of anon-2 rows1807\u20133313 (1507rows); primary agent supplied rows3314\u20133613 (300rows), independently cross-reviewed by agent3. Assignment ledger accounts for all1807 rows.",
+          "own_integration": "All1417 A3 records and262 root records are present in the final catalog with zero differences in title/topics/stance/context/concern/requested_change/constraints versus their repaired stable artifacts.",
+          "agent1_independent_review": "All2453 records and original3630 evidence blocks/2474 ledger rows mechanically audited. Manual work covered all23 transformed/split records,140 bespoke constraint sets,41 verification records,36 exclusions,50 title-literal candidates,47 potentially unsafe identity-redaction matches,100 lowest-source-overlap concern/source pairs and short correction candidates. This was a risk-focused independent review, not a second sequential manual reading of every full raw comment.",
+          "agent1_repair_recheck": "All7 findings repaired across19 cases/13rows with stable IDs. Revalidated all2453 records/3579 evidence blocks. Independently compared2358 selected nested JSON against raw source in230 scalar/identity-role checks, preserving goal4/rebalance1/trading1/charge2 events and consistent old/new portfolio identities. Exact approved agent1 hash d3e36ea6476c87c76f1dc6039c075f99330f72d5348931b4dd1880c91b148684.",
+          "final_catalog_integration": {
+            "catalog_cases": 5790,
+            "thread_context_records": 289,
+            "evidence_blocks_including_thread_context": 10510,
+            "source_evidence_errors": [],
+            "source_metadata_errors": [],
+            "coverage_rows": 6087,
+            "all6087_original_rows_unique_and_accounted": true,
+            "case_ids_unique": true,
+            "coverage_ids_resolve": true,
+            "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a"
+          },
+          "forward_tests": {
+            "passed": 15,
+            "artifact": "<build-workspace>/work/scala-akka-deep/agent-3/final-forward-tests.json",
+            "report_pdf_sftp": [
+              "R-3445",
+              "R-3319",
+              "R-3411",
+              "R-3412",
+              "R-3414",
+              "R-3416",
+              "R-3417",
+              "A3-0792",
+              "A3-1162"
+            ],
+            "portfolio_stats_not_found": [
+              "R-3555",
+              "R-3556",
+              "R-3557",
+              "R-3558",
+              "R-3559"
+            ],
+            "goal_plan_ordering": [
+              "R-3379",
+              "R-3380",
+              "R-3381",
+              "R-3383",
+              "R-3384",
+              "R-3385"
+            ],
+            "other_checks": "Verified withdrawals/qualifiers via PR and direct CTX ID; pagination total/offset; repaired eight-plan DiscountedPrice associations; fee-deletion event names/balance caveat; Docker label/env/build-info keys; Markdown evidence rendering."
+          }
+        },
+        "reasoning": "The exact merged candidate retains repaired source conditions and alternatives. The formerly lossy nested fee and migration structures, event lists, configuration/driver guards, contextual field attribution and thread corrections are now preserved with exact evidence. Complete row accounting, metadata hashes and all source spans pass; retrieval makes the relevant alternatives and withdrawals discoverable. No unresolved substantive objection remains within this review scope.",
+        "honest_limits": [
+          "Historical source claims are preserved as source claims rather than independently validated current Scala/Akka/database advice.",
+          "Not every raw hunk or repetitive long log was manually read byte-for-byte. Source-preserving cases and all final evidence spans were checked mechanically; authored/transformed/uncertain cases received the documented manual focus.",
+          "Agent3 did not perform a second semantic review of every A2 case; that scope is covered by the team\u2019s other independent review. The final merged A2 evidence and ledger entries were included in the whole-catalog mechanical checks.",
+          "references/review-convergence.json was still in_progress at inspection time. This file supplies agent3\u2019s explicit approval; the primary agent must assemble all reviewers\u2019 actual final decisions before declaring team unanimity."
+        ],
+        "supersedes_provisional_workflow_completeness_limit": "The earlier workflow review snapshot had174 missing rows. This exact final catalog has6087/6087 rows accounted, zero missing,5790 cases and289 additional thread-context records.",
+        "shared_staged_files_modified": false
+      }
+    }
+  ],
+  "primary_review": {
+    "reviewer": "primary",
+    "decision": "approve",
+    "approved_artifact_hashes": {
+      "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+      "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+      "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+    },
+    "unresolved_substantive_objections": [],
+    "basis": [
+      "Read all 300 assigned final source comments directly; independently reviewed and repaired the root-slice findings until the reviewer found no remaining substantive objection.",
+      "Inspected the assembled skill router, retrieval helper, case index, concrete correction thread, restored technical fields and all independent review findings/rechecks.",
+      "Independently checked every final exact comment/hunk/title evidence span, both source hashes, all 6087 row references, unique case IDs and every topic membership.",
+      "Exercised concrete exact-symbol, exact-ID, correction-thread and contextual withdrawal lookups against the actual final catalog.",
+      "Official skill validation passed for 59 skills; package metadata/links and all 9 package tests passed. Repository preflight found no conflicting edits."
+    ],
+    "assembled_artifact_audit": {
+      "status": "passed",
+      "catalog_cases": 5790,
+      "source_rows_accounted": 6087,
+      "additional_thread_context_rows": 289,
+      "exact_comment_evidence_blocks_checked": 7473,
+      "exact_hunk_or_title_context_blocks_checked": 6406,
+      "topics": {
+        "actor-state": 435,
+        "api-types-json": 1842,
+        "async-effects": 390,
+        "database": 360,
+        "design-scope": 1368,
+        "domain-validation": 2848,
+        "errors-observability": 646,
+        "kafka-streams": 167,
+        "persistence-evolution": 229,
+        "projections-delivery": 426,
+        "rollout-operations": 654,
+        "scala-collections": 375,
+        "testing": 350
+      },
+      "hashes": {
+        "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+        "helper_sha256": "5db4c7f2ff8f261cb01017a60bb29d64976be32f9faa6c62ec051f8b9d8bc3af",
+        "skill_sha256": "7dbdedbb3c750825cbd1e3103bb0ae523038bb1dc0b1dbc595ae33dd65120465"
+      },
+      "scope": "Independent assembled-artifact source/ledger/evidence audit, all topic routes, and concrete symbol, correction-thread, exact-ID and context retrieval checks. Primary manual extraction and repair review are documented separately."
+    },
+    "limits": [
+      "This is not a second full manual reading of every source comment or every full source hunk by the primary agent.",
+      "Historical review statements and tests are evidence from the supplied corpus, not a guarantee of their correctness or current applicability.",
+      "Incidental identifiers and portions of repetitive operational dumps are omitted as disclosed in source-provenance.json. Long transformed views were reviewed for technical conditions and associations, without claiming byte-for-byte log review.",
+      "Retrieval/helper and instruction behavior were tested independently; a full native Codex model execution of all pstack workflows was not run."
+    ]
+  },
+  "unresolved_substantive_objections": [],
+  "limits": [
+    "This is not a second full manual reading of every source comment or every full source hunk by the primary agent.",
+    "Historical review statements and tests are evidence from the supplied corpus, not a guarantee of their correctness or current applicability.",
+    "Incidental identifiers and portions of repetitive operational dumps are omitted as disclosed in source-provenance.json. Long transformed views were reviewed for technical conditions and associations, without claiming byte-for-byte log review.",
+    "Retrieval/helper and instruction behavior were tested independently; a full native Codex model execution of all pstack workflows was not run."
+  ]
+}

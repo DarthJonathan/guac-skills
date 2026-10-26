@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Test Behavior Not Implementation"
+  short_description: "Test behavior not implementation"
+  default_prompt: "Use $principle-test-behavior-not-implementation for this task."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,43 @@
+{
+  "sources": {
+    "anon-1.jsonl": {
+      "rows": 2474,
+      "sha256": "512aca50497030ac24fe4e8b4f2781cd152f98540c86d8690ea6f02beba98ae8",
+      "distinct_prs": 351
+    },
+    "anon-2.jsonl": {
+      "rows": 3613,
+      "sha256": "88b2f5522c01cab10ddffcef823cb5a9604582497c603eeceeff45c082f535fc",
+      "distinct_prs": 701
+    }
+  },
+  "source_rows": 6087,
+  "accounted_rows": 6087,
+  "missing_rows": 0,
+  "catalog_cases": 5790,
+  "dispositions": {
+    "acknowledgement": 80,
+    "empty": 2,
+    "empty-comment": 8,
+    "pattern evidence": 2045,
+    "pattern-evidence": 2251,
+    "procedural/nontechnical": 33,
+    "supporting context": 14,
+    "supporting-context": 174,
+    "technical question without settled answer": 589,
+    "technical-question-without-settled-answer": 783,
+    "test evidence": 67,
+    "test-evidence": 41
+  },
+  "source_inspection_reports": {
+    "agent-1": "Every raw comment read manually in indexed batches, with PR title and inline path available. Long comment2358 inspected in additional contiguous ranges after batch output truncation; row376 re-read separately after truncation. All rows manually assigned disposition, stance and topics in notes.tsv. Exact quotations assembled programmatically from source; selected source hunks inspected, and near-line excerpts added mechanically for terse comments.",
+    "agent-2": "The full prose of every assigned comment was displayed and read manually in numbered sequential batches. Verbose protocol/database/state logs were selectively inspected, not manually reviewed byte-for-byte; repeated log content and incidental entity/account/timestamp identifiers are excluded. Source row 1307 was read as all prose plus a targeted inventory of every long block for statuses, amounts, order split, forceDelete/forceSettle and recovery fields. Other long tests at 259,683,1305,1310,1574 retain targeted exact evidence. All 290 available hunk excerpts for initially terse supporting rows were read in a second pass, with 251 upgraded to source-specific records; other ambiguous hunks were read on demand. No claim is made that all 4.5MB of assigned hunk text was read. Stance/disposition were manually assigned. Topic tags and default titles were programmatically proposed from source text/path as navigation aids. Each substantive comment remains its own record to avoid merging distinct conditions. requested_change preserves comment wording with incidental identity removed, except explicitly condensed long test reports at rows 259,299,683,1305,1307,1310,1574. Questions, caveats, contradictory views and embedded proposals are retained. PR status/resolved flags are never used to infer implementation. Independent agent-1 review subsequently identified18 explicit no-hunk symbol/configuration/deployment/package actions/questions; all18 were promoted with exact source wording and conservative target limits. Existing case IDs and contents were unchanged.",
+    "agent-3": "Agent-3 manually read raw comments1807–3313 sequentially in numbered batches; the primary agent independently read3314–3613 and supplies their ledger/records in root-slice. Exact source spans are retained programmatically, with incidental identifiers omitted. Agent-3 then inspected selected numbered hunk excerpts for ambiguous/short comments; automatically located excerpts on remaining records are context-only and are not claimed as manually reviewed in full.",
+    "root-slice": "Primary agent displayed and read every full comment in four nontruncated batches, and inspected selected historical diff hunks. Pattern wording is source text; topic labels and stance assignments are editorial metadata. Incidental IDs omitted without altering technical conditions."
+  },
+  "traceability_checks": "Every evidence comment ID and exact quote/context substring checked against its original row; every coverage pattern ID resolves.",
+  "interpretation": "Editorial metadata is distinct from verbatim evidence. Historical comments include questions, alternatives, reversals, and author replies. Source PR state and resolved flags do not establish correctness or implementation.",
+  "omissions": "Incidental human/customer/account identifiers and portions of long operational dumps are omitted where not technically material. Domain symbols, conditions, numeric boundaries, and meaningful case branches are retained.",
+  "catalog_sha256": "b742b79a97f1784fb5169262f331b03876c4c547be96134b9350d70e0e1a195a",
+  "additional_thread_context_rows": 289
+}

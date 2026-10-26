@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Tdd"
+  short_description: "Tdd with pstack workflows"
+  default_prompt: "Use $tdd for this task."
+
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Boundary Discipline"
+  short_description: "Boundary discipline with pstack workflows"
+  default_prompt: "Use $principle-boundary-discipline for this task."
+
+policy:
+  allow_implicit_invocation: false

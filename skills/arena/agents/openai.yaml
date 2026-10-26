@@ -1,0 +1,7 @@
+interface:
+  display_name: "Pstack · Arena"
+  short_description: "Arena with pstack workflows"
+  default_prompt: "Use $arena for this task."
+
+policy:
+  allow_implicit_invocation: false
